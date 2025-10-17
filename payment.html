@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Payment</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>💳 Choose Payment Method</h1>
+    <input type="text" placeholder="Search products..." />
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <p>Product Price: ₹<span id="basePrice">0</span></p>
+    <p>Delivery Charge (30%): ₹<span id="deliveryCharge">0</span></p>
+    <p>Total: ₹<span id="totalPrice">0</span></p>
+
+    <form action="upi.html">
+      <label><input type="radio" name="method" required /> Credit Card</label><br />
+      <label><input type="radio" name="method" /> GPay</label><br />
+      <label><input type="radio" name="method" /> PhonePe</label><br />
+      <label><input type="radio" name="method" /> Cash on Delivery</label><br /><br />
+      <button type="submit">Payment</button>
+    </form>
+
+    <script>
+      const urlParams = new URLSearchParams(document.referrer.split('?')[1]);
+      const price = parseFloat(urlParams.get('price'));
+      const delivery = price * 0.3;
+      document.getElementById('basePrice').textContent = price;
+      document.getElementById('deliveryCharge').textContent = delivery.toFixed(2);
+      document.getElementById('totalPrice').textContent = (price + delivery).toFixed(2);
+    </script>
+  </main>
+</body>
+</html>

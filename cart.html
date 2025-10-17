@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🛒 Your Cart</h1>
+    <input type="text" placeholder="Search products..." />
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const product = urlParams.get('product');
+      const price = parseFloat(urlParams.get('price'));
+      document.write(`<h2>${product}</h2><p>Price: ₹${price}</p>`);
+    </script>
+    <button onclick="location.href='address.html'">Pay Now</button>
+  </main>
+</body>
+</html>
